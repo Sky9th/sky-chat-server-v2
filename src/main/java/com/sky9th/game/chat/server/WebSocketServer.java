@@ -12,6 +12,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.stream.ChunkedWriteHandler;
+import io.netty.handler.timeout.IdleStateHandler;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -32,6 +33,8 @@ public class WebSocketServer {
                             ch.pipeline().addLast("aggregator", new HttpObjectAggregator(65535));
                             ch.pipeline().addLast("http-chunked", new ChunkedWriteHandler());
                             ch.pipeline().addLast("http-request", new HttpRequestHandler());
+                            ch.pipeline().addLast("idle-handler", new IdleStateHandler(5,5,5));
+                            ch.pipeline().addLast("heart-beat", new HeartBeatHandler());
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)          // (5)

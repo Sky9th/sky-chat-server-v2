@@ -7,39 +7,30 @@ import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpRequest;
 import io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker;
 import io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class HttpRequestHandler extends ChannelInboundHandlerAdapter {
 
-    WebSocketServerHandshaker handshaker;
+    WebSocketServerHandshaker handshake;
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
 
         if (msg instanceof HttpRequest) {
-
             HttpRequest httpRequest = (HttpRequest) msg;
-
-            System.out.println("Http Request Received");
-
             HttpHeaders headers = httpRequest.headers();
-            System.out.println("Connection : " +headers.get("Connection"));
-            System.out.println("Upgrade : " + headers.get("Upgrade"));
-
             if ("Upgrade".equalsIgnoreCase(headers.get(HttpHeaderNames.CONNECTION)) &&
                     "WebSocket".equalsIgnoreCase(headers.get(HttpHeaderNames.UPGRADE))) {
-
                 //Adding new handler to the existing pipeline to handle WebSocket Messages
-                ctx.pipeline().replace(this, "websocketHandler", new WebSocketHandler());
-
-                System.out.println("WebSocketHandler added to the pipeline");
-                System.out.println("Opened Channel : " + ctx.channel());
-                System.out.println("Handshaking....");
+                ctx.pipeline().addLast("websocketHandler", new WebSocketHandler());
+                log.info("WebSocketHandler added to the pipeline" + ",Opened Channel : " + ctx.channel() + ",Handshaking....");
                 //Do the Handshake to upgrade connection from HTTP to WebSocket protocol
                 handleHandshake(ctx, httpRequest);
-                System.out.println("Handshake is done");
+                log.info("Handshake is done");
             }
         } else {
-            System.out.println("Incoming request is unknown");
+            log.info("Incoming request is unknown");
         }
     }
 
@@ -47,18 +38,18 @@ public class HttpRequestHandler extends ChannelInboundHandlerAdapter {
     protected void handleHandshake(ChannelHandlerContext ctx, HttpRequest req) {
         WebSocketServerHandshakerFactory wsFactory =
                 new WebSocketServerHandshakerFactory(getWebSocketURL(req), null, true);
-        handshaker = wsFactory.newHandshaker(req);
-        if (handshaker == null) {
+        handshake = wsFactory.newHandshaker(req);
+        if (handshake == null) {
             WebSocketServerHandshakerFactory.sendUnsupportedVersionResponse(ctx.channel());
         } else {
-            handshaker.handshake(ctx.channel(), req);
+            handshake.handshake(ctx.channel(), req);
         }
     }
 
     protected String getWebSocketURL(HttpRequest req) {
-        System.out.println("Req URI : " + req.getUri());
+        log.info("Req URI : " + req.getUri());
         String url =  "ws://" + req.headers().get("Host") + req.getUri() ;
-        System.out.println("Constructed URL : " + url);
+        log.info("Constructed URL : " + url);
         return url;
     }
 }
