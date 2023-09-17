@@ -11,9 +11,9 @@ public class HeartBeatHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        super.userEventTriggered(ctx, evt);
+        log.info(evt.toString());
         if(evt instanceof IdleStateEvent event) {
-            if (event.state() == IdleState.ALL_IDLE) {
+            if (event.state() == IdleState.READER_IDLE) {
                 log.info("Close Client channel:" + ctx.channel() + " for 5s idle");
                 ctx.close();
             }

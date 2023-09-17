@@ -29,12 +29,12 @@ public class WebSocketServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() { // (4)
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
+                            ch.pipeline().addLast("idle-handler", new IdleStateHandler(5,5,5));
+                            ch.pipeline().addLast("heart-beat", new HeartBeatHandler());
                             ch.pipeline().addLast("http-codec", new HttpServerCodec());
                             ch.pipeline().addLast("aggregator", new HttpObjectAggregator(65535));
                             ch.pipeline().addLast("http-chunked", new ChunkedWriteHandler());
                             ch.pipeline().addLast("http-request", new HttpRequestHandler());
-                            ch.pipeline().addLast("idle-handler", new IdleStateHandler(5,5,5));
-                            ch.pipeline().addLast("heart-beat", new HeartBeatHandler());
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)          // (5)

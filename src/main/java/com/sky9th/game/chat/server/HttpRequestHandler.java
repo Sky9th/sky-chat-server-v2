@@ -9,6 +9,8 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker;
 import io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory;
 import lombok.extern.slf4j.Slf4j;
 
+import java.nio.Buffer;
+
 @Slf4j
 public class HttpRequestHandler extends ChannelInboundHandlerAdapter {
 
@@ -16,14 +18,13 @@ public class HttpRequestHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-
         if (msg instanceof HttpRequest) {
             HttpRequest httpRequest = (HttpRequest) msg;
             HttpHeaders headers = httpRequest.headers();
             if ("Upgrade".equalsIgnoreCase(headers.get(HttpHeaderNames.CONNECTION)) &&
                     "WebSocket".equalsIgnoreCase(headers.get(HttpHeaderNames.UPGRADE))) {
                 //Adding new handler to the existing pipeline to handle WebSocket Messages
-                ctx.pipeline().addLast("websocketHandler", new WebSocketHandler());
+                ctx.channel().pipeline().addLast("websocketHandler", new WebSocketHandler());
                 log.info("WebSocketHandler added to the pipeline" + ",Opened Channel : " + ctx.channel() + ",Handshaking....");
                 //Do the Handshake to upgrade connection from HTTP to WebSocket protocol
                 handleHandshake(ctx, httpRequest);
@@ -31,6 +32,7 @@ public class HttpRequestHandler extends ChannelInboundHandlerAdapter {
             }
         } else {
             log.info("Incoming request is unknown");
+            ctx.fireChannelRead(msg);
         }
     }
 
