@@ -21,12 +21,15 @@ public class WebSocketHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws IOException {
         if (msg instanceof BinaryWebSocketFrame) {
             ByteBuf buf = ((BinaryWebSocketFrame) msg).content();
-            byte[] bytes = new byte[8];
-            buf = buf.readBytes(bytes);
-            String type = new String(bytes);
-            log.info(String.valueOf(Integer.parseInt(type)));
-            String str = buf.toString(StandardCharsets.UTF_8);
-            log.info("receive msg from: " + ctx.channel() + " type:" + type + ", content:" +str);
+            while (buf.isReadable()) {
+                byte[] bytes = new byte[8];
+                buf = buf.readBytes(bytes);
+                int length = Integer.parseInt(new String(bytes));
+                byte[] data = new byte[length];
+                buf = buf.readBytes(data);
+                String str = new String(data);
+                log.info("receive msg from: " + ctx.channel() + " length:" + length + ", content:" +str);
+            }
         }
 
     }
