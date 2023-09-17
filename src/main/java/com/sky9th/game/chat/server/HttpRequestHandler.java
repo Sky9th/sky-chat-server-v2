@@ -31,7 +31,6 @@ public class HttpRequestHandler extends ChannelInboundHandlerAdapter {
                 log.info("Handshake is done");
             }
         } else {
-            log.info("Incoming request is unknown");
             ctx.fireChannelRead(msg);
         }
     }
