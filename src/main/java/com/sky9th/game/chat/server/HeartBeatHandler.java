@@ -15,7 +15,7 @@ public class HeartBeatHandler extends ChannelInboundHandlerAdapter {
         if(evt instanceof IdleStateEvent event) {
             if (event.state() == IdleState.READER_IDLE) {
                 log.info("Close Client channel:" + ctx.channel() + " for 5s idle");
-                ctx.close();
+                //ctx.close();
             }
         }
     }
