@@ -8,41 +8,51 @@ public interface PlayerInfoOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string networkID = 1;</code>
+   * <code>required string networkID = 1;</code>
+   * @return Whether the networkID field is set.
+   */
+  boolean hasNetworkID();
+  /**
+   * <code>required string networkID = 1;</code>
    * @return The networkID.
    */
   java.lang.String getNetworkID();
   /**
-   * <code>string networkID = 1;</code>
+   * <code>required string networkID = 1;</code>
    * @return The bytes for networkID.
    */
   com.google.protobuf.ByteString
       getNetworkIDBytes();
 
   /**
-   * <code>string type = 2;</code>
+   * <code>required string type = 2 [default = "PlayerInfo"];</code>
+   * @return Whether the type field is set.
+   */
+  boolean hasType();
+  /**
+   * <code>required string type = 2 [default = "PlayerInfo"];</code>
    * @return The type.
    */
   java.lang.String getType();
   /**
-   * <code>string type = 2;</code>
+   * <code>required string type = 2 [default = "PlayerInfo"];</code>
    * @return The bytes for type.
    */
   com.google.protobuf.ByteString
       getTypeBytes();
 
   /**
-   * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+   * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
    * @return Whether the transform field is set.
    */
   boolean hasTransform();
   /**
-   * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+   * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
    * @return The transform.
    */
   com.sky9th.game.chat.protos.Transform getTransform();
   /**
-   * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+   * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
    */
   com.sky9th.game.chat.protos.TransformOrBuilder getTransformOrBuilder();
 }

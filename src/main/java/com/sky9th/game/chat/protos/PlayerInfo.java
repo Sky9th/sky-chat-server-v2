@@ -17,7 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private PlayerInfo() {
     networkID_ = "";
-    type_ = "";
+    type_ = "PlayerInfo";
   }
 
   @java.lang.Override
@@ -45,7 +45,15 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private volatile java.lang.Object networkID_ = "";
   /**
-   * <code>string networkID = 1;</code>
+   * <code>required string networkID = 1;</code>
+   * @return Whether the networkID field is set.
+   */
+  @java.lang.Override
+  public boolean hasNetworkID() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   * <code>required string networkID = 1;</code>
    * @return The networkID.
    */
   @java.lang.Override
@@ -57,12 +65,14 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      networkID_ = s;
+      if (bs.isValidUtf8()) {
+        networkID_ = s;
+      }
       return s;
     }
   }
   /**
-   * <code>string networkID = 1;</code>
+   * <code>required string networkID = 1;</code>
    * @return The bytes for networkID.
    */
   @java.lang.Override
@@ -82,9 +92,17 @@ private static final long serialVersionUID = 0L;
 
   public static final int TYPE_FIELD_NUMBER = 2;
   @SuppressWarnings("serial")
-  private volatile java.lang.Object type_ = "";
+  private volatile java.lang.Object type_ = "PlayerInfo";
   /**
-   * <code>string type = 2;</code>
+   * <code>required string type = 2 [default = "PlayerInfo"];</code>
+   * @return Whether the type field is set.
+   */
+  @java.lang.Override
+  public boolean hasType() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <code>required string type = 2 [default = "PlayerInfo"];</code>
    * @return The type.
    */
   @java.lang.Override
@@ -96,12 +114,14 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      type_ = s;
+      if (bs.isValidUtf8()) {
+        type_ = s;
+      }
       return s;
     }
   }
   /**
-   * <code>string type = 2;</code>
+   * <code>required string type = 2 [default = "PlayerInfo"];</code>
    * @return The bytes for type.
    */
   @java.lang.Override
@@ -122,15 +142,15 @@ private static final long serialVersionUID = 0L;
   public static final int TRANSFORM_FIELD_NUMBER = 3;
   private com.sky9th.game.chat.protos.Transform transform_;
   /**
-   * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+   * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
    * @return Whether the transform field is set.
    */
   @java.lang.Override
   public boolean hasTransform() {
-    return ((bitField0_ & 0x00000001) != 0);
+    return ((bitField0_ & 0x00000004) != 0);
   }
   /**
-   * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+   * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
    * @return The transform.
    */
   @java.lang.Override
@@ -138,7 +158,7 @@ private static final long serialVersionUID = 0L;
     return transform_ == null ? com.sky9th.game.chat.protos.Transform.getDefaultInstance() : transform_;
   }
   /**
-   * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+   * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
    */
   @java.lang.Override
   public com.sky9th.game.chat.protos.TransformOrBuilder getTransformOrBuilder() {
@@ -152,6 +172,22 @@ private static final long serialVersionUID = 0L;
     if (isInitialized == 1) return true;
     if (isInitialized == 0) return false;
 
+    if (!hasNetworkID()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
+    if (!hasType()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
+    if (!hasTransform()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
+    if (!getTransform().isInitialized()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
     memoizedIsInitialized = 1;
     return true;
   }
@@ -159,13 +195,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(networkID_)) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, networkID_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
+    if (((bitField0_ & 0x00000002) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, type_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (((bitField0_ & 0x00000004) != 0)) {
       output.writeMessage(3, getTransform());
     }
     getUnknownFields().writeTo(output);
@@ -177,13 +213,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(networkID_)) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, networkID_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
+    if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, type_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, getTransform());
     }
@@ -202,10 +238,16 @@ private static final long serialVersionUID = 0L;
     }
     com.sky9th.game.chat.protos.PlayerInfo other = (com.sky9th.game.chat.protos.PlayerInfo) obj;
 
-    if (!getNetworkID()
-        .equals(other.getNetworkID())) return false;
-    if (!getType()
-        .equals(other.getType())) return false;
+    if (hasNetworkID() != other.hasNetworkID()) return false;
+    if (hasNetworkID()) {
+      if (!getNetworkID()
+          .equals(other.getNetworkID())) return false;
+    }
+    if (hasType() != other.hasType()) return false;
+    if (hasType()) {
+      if (!getType()
+          .equals(other.getType())) return false;
+    }
     if (hasTransform() != other.hasTransform()) return false;
     if (hasTransform()) {
       if (!getTransform()
@@ -222,10 +264,14 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + NETWORKID_FIELD_NUMBER;
-    hash = (53 * hash) + getNetworkID().hashCode();
-    hash = (37 * hash) + TYPE_FIELD_NUMBER;
-    hash = (53 * hash) + getType().hashCode();
+    if (hasNetworkID()) {
+      hash = (37 * hash) + NETWORKID_FIELD_NUMBER;
+      hash = (53 * hash) + getNetworkID().hashCode();
+    }
+    if (hasType()) {
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getType().hashCode();
+    }
     if (hasTransform()) {
       hash = (37 * hash) + TRANSFORM_FIELD_NUMBER;
       hash = (53 * hash) + getTransform().hashCode();
@@ -368,7 +414,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       bitField0_ = 0;
       networkID_ = "";
-      type_ = "";
+      type_ = "PlayerInfo";
       transform_ = null;
       if (transformBuilder_ != null) {
         transformBuilder_.dispose();
@@ -407,18 +453,20 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(com.sky9th.game.chat.protos.PlayerInfo result) {
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.networkID_ = networkID_;
+        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.type_ = type_;
+        to_bitField0_ |= 0x00000002;
       }
-      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.transform_ = transformBuilder_ == null
             ? transform_
             : transformBuilder_.build();
-        to_bitField0_ |= 0x00000001;
+        to_bitField0_ |= 0x00000004;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -467,12 +515,12 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.sky9th.game.chat.protos.PlayerInfo other) {
       if (other == com.sky9th.game.chat.protos.PlayerInfo.getDefaultInstance()) return this;
-      if (!other.getNetworkID().isEmpty()) {
+      if (other.hasNetworkID()) {
         networkID_ = other.networkID_;
         bitField0_ |= 0x00000001;
         onChanged();
       }
-      if (!other.getType().isEmpty()) {
+      if (other.hasType()) {
         type_ = other.type_;
         bitField0_ |= 0x00000002;
         onChanged();
@@ -487,6 +535,18 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public final boolean isInitialized() {
+      if (!hasNetworkID()) {
+        return false;
+      }
+      if (!hasType()) {
+        return false;
+      }
+      if (!hasTransform()) {
+        return false;
+      }
+      if (!getTransform().isInitialized()) {
+        return false;
+      }
       return true;
     }
 
@@ -507,12 +567,12 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              networkID_ = input.readStringRequireUtf8();
+              networkID_ = input.readBytes();
               bitField0_ |= 0x00000001;
               break;
             } // case 10
             case 18: {
-              type_ = input.readStringRequireUtf8();
+              type_ = input.readBytes();
               bitField0_ |= 0x00000002;
               break;
             } // case 18
@@ -542,7 +602,14 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object networkID_ = "";
     /**
-     * <code>string networkID = 1;</code>
+     * <code>required string networkID = 1;</code>
+     * @return Whether the networkID field is set.
+     */
+    public boolean hasNetworkID() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required string networkID = 1;</code>
      * @return The networkID.
      */
     public java.lang.String getNetworkID() {
@@ -551,14 +618,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        networkID_ = s;
+        if (bs.isValidUtf8()) {
+          networkID_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string networkID = 1;</code>
+     * <code>required string networkID = 1;</code>
      * @return The bytes for networkID.
      */
     public com.google.protobuf.ByteString
@@ -575,7 +644,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string networkID = 1;</code>
+     * <code>required string networkID = 1;</code>
      * @param value The networkID to set.
      * @return This builder for chaining.
      */
@@ -588,7 +657,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string networkID = 1;</code>
+     * <code>required string networkID = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearNetworkID() {
@@ -598,23 +667,29 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string networkID = 1;</code>
+     * <code>required string networkID = 1;</code>
      * @param value The bytes for networkID to set.
      * @return This builder for chaining.
      */
     public Builder setNetworkIDBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
       networkID_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
 
-    private java.lang.Object type_ = "";
+    private java.lang.Object type_ = "PlayerInfo";
     /**
-     * <code>string type = 2;</code>
+     * <code>required string type = 2 [default = "PlayerInfo"];</code>
+     * @return Whether the type field is set.
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>required string type = 2 [default = "PlayerInfo"];</code>
      * @return The type.
      */
     public java.lang.String getType() {
@@ -623,14 +698,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        type_ = s;
+        if (bs.isValidUtf8()) {
+          type_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string type = 2;</code>
+     * <code>required string type = 2 [default = "PlayerInfo"];</code>
      * @return The bytes for type.
      */
     public com.google.protobuf.ByteString
@@ -647,7 +724,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string type = 2;</code>
+     * <code>required string type = 2 [default = "PlayerInfo"];</code>
      * @param value The type to set.
      * @return This builder for chaining.
      */
@@ -660,7 +737,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string type = 2;</code>
+     * <code>required string type = 2 [default = "PlayerInfo"];</code>
      * @return This builder for chaining.
      */
     public Builder clearType() {
@@ -670,14 +747,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string type = 2;</code>
+     * <code>required string type = 2 [default = "PlayerInfo"];</code>
      * @param value The bytes for type to set.
      * @return This builder for chaining.
      */
     public Builder setTypeBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
       type_ = value;
       bitField0_ |= 0x00000002;
       onChanged();
@@ -688,14 +764,14 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.sky9th.game.chat.protos.Transform, com.sky9th.game.chat.protos.Transform.Builder, com.sky9th.game.chat.protos.TransformOrBuilder> transformBuilder_;
     /**
-     * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+     * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
      * @return Whether the transform field is set.
      */
     public boolean hasTransform() {
       return ((bitField0_ & 0x00000004) != 0);
     }
     /**
-     * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+     * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
      * @return The transform.
      */
     public com.sky9th.game.chat.protos.Transform getTransform() {
@@ -706,7 +782,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+     * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
      */
     public Builder setTransform(com.sky9th.game.chat.protos.Transform value) {
       if (transformBuilder_ == null) {
@@ -722,7 +798,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+     * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
      */
     public Builder setTransform(
         com.sky9th.game.chat.protos.Transform.Builder builderForValue) {
@@ -736,7 +812,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+     * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
      */
     public Builder mergeTransform(com.sky9th.game.chat.protos.Transform value) {
       if (transformBuilder_ == null) {
@@ -757,7 +833,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+     * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
      */
     public Builder clearTransform() {
       bitField0_ = (bitField0_ & ~0x00000004);
@@ -770,7 +846,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+     * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
      */
     public com.sky9th.game.chat.protos.Transform.Builder getTransformBuilder() {
       bitField0_ |= 0x00000004;
@@ -778,7 +854,7 @@ private static final long serialVersionUID = 0L;
       return getTransformFieldBuilder().getBuilder();
     }
     /**
-     * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+     * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
      */
     public com.sky9th.game.chat.protos.TransformOrBuilder getTransformOrBuilder() {
       if (transformBuilder_ != null) {
@@ -789,7 +865,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.Sky9th.Protobuf.Transform transform = 3;</code>
+     * <code>required .Sky9th.Protobuf.Transform transform = 3;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         com.sky9th.game.chat.protos.Transform, com.sky9th.game.chat.protos.Transform.Builder, com.sky9th.game.chat.protos.TransformOrBuilder> 
@@ -830,7 +906,7 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<PlayerInfo>
+  @java.lang.Deprecated public static final com.google.protobuf.Parser<PlayerInfo>
       PARSER = new com.google.protobuf.AbstractParser<PlayerInfo>() {
     @java.lang.Override
     public PlayerInfo parsePartialFrom(

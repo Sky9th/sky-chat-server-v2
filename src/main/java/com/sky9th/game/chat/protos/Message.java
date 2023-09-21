@@ -17,7 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private Message() {
     networkID_ = "";
-    type_ = "";
+    type_ = "Message";
     message_ = "";
   }
 
@@ -41,11 +41,20 @@ private static final long serialVersionUID = 0L;
             com.sky9th.game.chat.protos.Message.class, com.sky9th.game.chat.protos.Message.Builder.class);
   }
 
+  private int bitField0_;
   public static final int NETWORKID_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
   private volatile java.lang.Object networkID_ = "";
   /**
-   * <code>string networkID = 1;</code>
+   * <code>required string networkID = 1;</code>
+   * @return Whether the networkID field is set.
+   */
+  @java.lang.Override
+  public boolean hasNetworkID() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   * <code>required string networkID = 1;</code>
    * @return The networkID.
    */
   @java.lang.Override
@@ -57,12 +66,14 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      networkID_ = s;
+      if (bs.isValidUtf8()) {
+        networkID_ = s;
+      }
       return s;
     }
   }
   /**
-   * <code>string networkID = 1;</code>
+   * <code>required string networkID = 1;</code>
    * @return The bytes for networkID.
    */
   @java.lang.Override
@@ -82,9 +93,17 @@ private static final long serialVersionUID = 0L;
 
   public static final int TYPE_FIELD_NUMBER = 2;
   @SuppressWarnings("serial")
-  private volatile java.lang.Object type_ = "";
+  private volatile java.lang.Object type_ = "Message";
   /**
-   * <code>string type = 2;</code>
+   * <code>required string type = 2 [default = "Message"];</code>
+   * @return Whether the type field is set.
+   */
+  @java.lang.Override
+  public boolean hasType() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <code>required string type = 2 [default = "Message"];</code>
    * @return The type.
    */
   @java.lang.Override
@@ -96,12 +115,14 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      type_ = s;
+      if (bs.isValidUtf8()) {
+        type_ = s;
+      }
       return s;
     }
   }
   /**
-   * <code>string type = 2;</code>
+   * <code>required string type = 2 [default = "Message"];</code>
    * @return The bytes for type.
    */
   @java.lang.Override
@@ -123,7 +144,15 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private volatile java.lang.Object message_ = "";
   /**
-   * <code>string message = 3;</code>
+   * <code>required string message = 3;</code>
+   * @return Whether the message field is set.
+   */
+  @java.lang.Override
+  public boolean hasMessage() {
+    return ((bitField0_ & 0x00000004) != 0);
+  }
+  /**
+   * <code>required string message = 3;</code>
    * @return The message.
    */
   @java.lang.Override
@@ -135,12 +164,14 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      message_ = s;
+      if (bs.isValidUtf8()) {
+        message_ = s;
+      }
       return s;
     }
   }
   /**
-   * <code>string message = 3;</code>
+   * <code>required string message = 3;</code>
    * @return The bytes for message.
    */
   @java.lang.Override
@@ -165,6 +196,18 @@ private static final long serialVersionUID = 0L;
     if (isInitialized == 1) return true;
     if (isInitialized == 0) return false;
 
+    if (!hasNetworkID()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
+    if (!hasType()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
+    if (!hasMessage()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
     memoizedIsInitialized = 1;
     return true;
   }
@@ -172,13 +215,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(networkID_)) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, networkID_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
+    if (((bitField0_ & 0x00000002) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, type_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+    if (((bitField0_ & 0x00000004) != 0)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, message_);
     }
     getUnknownFields().writeTo(output);
@@ -190,13 +233,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(networkID_)) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, networkID_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
+    if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, type_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+    if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, message_);
     }
     size += getUnknownFields().getSerializedSize();
@@ -214,12 +257,21 @@ private static final long serialVersionUID = 0L;
     }
     com.sky9th.game.chat.protos.Message other = (com.sky9th.game.chat.protos.Message) obj;
 
-    if (!getNetworkID()
-        .equals(other.getNetworkID())) return false;
-    if (!getType()
-        .equals(other.getType())) return false;
-    if (!getMessage()
-        .equals(other.getMessage())) return false;
+    if (hasNetworkID() != other.hasNetworkID()) return false;
+    if (hasNetworkID()) {
+      if (!getNetworkID()
+          .equals(other.getNetworkID())) return false;
+    }
+    if (hasType() != other.hasType()) return false;
+    if (hasType()) {
+      if (!getType()
+          .equals(other.getType())) return false;
+    }
+    if (hasMessage() != other.hasMessage()) return false;
+    if (hasMessage()) {
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -231,12 +283,18 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + NETWORKID_FIELD_NUMBER;
-    hash = (53 * hash) + getNetworkID().hashCode();
-    hash = (37 * hash) + TYPE_FIELD_NUMBER;
-    hash = (53 * hash) + getType().hashCode();
-    hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
-    hash = (53 * hash) + getMessage().hashCode();
+    if (hasNetworkID()) {
+      hash = (37 * hash) + NETWORKID_FIELD_NUMBER;
+      hash = (53 * hash) + getNetworkID().hashCode();
+    }
+    if (hasType()) {
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getType().hashCode();
+    }
+    if (hasMessage()) {
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -369,7 +427,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       bitField0_ = 0;
       networkID_ = "";
-      type_ = "";
+      type_ = "Message";
       message_ = "";
       return this;
     }
@@ -404,15 +462,20 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(com.sky9th.game.chat.protos.Message result) {
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.networkID_ = networkID_;
+        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.type_ = type_;
+        to_bitField0_ |= 0x00000002;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.message_ = message_;
+        to_bitField0_ |= 0x00000004;
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -459,17 +522,17 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.sky9th.game.chat.protos.Message other) {
       if (other == com.sky9th.game.chat.protos.Message.getDefaultInstance()) return this;
-      if (!other.getNetworkID().isEmpty()) {
+      if (other.hasNetworkID()) {
         networkID_ = other.networkID_;
         bitField0_ |= 0x00000001;
         onChanged();
       }
-      if (!other.getType().isEmpty()) {
+      if (other.hasType()) {
         type_ = other.type_;
         bitField0_ |= 0x00000002;
         onChanged();
       }
-      if (!other.getMessage().isEmpty()) {
+      if (other.hasMessage()) {
         message_ = other.message_;
         bitField0_ |= 0x00000004;
         onChanged();
@@ -481,6 +544,15 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public final boolean isInitialized() {
+      if (!hasNetworkID()) {
+        return false;
+      }
+      if (!hasType()) {
+        return false;
+      }
+      if (!hasMessage()) {
+        return false;
+      }
       return true;
     }
 
@@ -501,17 +573,17 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              networkID_ = input.readStringRequireUtf8();
+              networkID_ = input.readBytes();
               bitField0_ |= 0x00000001;
               break;
             } // case 10
             case 18: {
-              type_ = input.readStringRequireUtf8();
+              type_ = input.readBytes();
               bitField0_ |= 0x00000002;
               break;
             } // case 18
             case 26: {
-              message_ = input.readStringRequireUtf8();
+              message_ = input.readBytes();
               bitField0_ |= 0x00000004;
               break;
             } // case 26
@@ -534,7 +606,14 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object networkID_ = "";
     /**
-     * <code>string networkID = 1;</code>
+     * <code>required string networkID = 1;</code>
+     * @return Whether the networkID field is set.
+     */
+    public boolean hasNetworkID() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required string networkID = 1;</code>
      * @return The networkID.
      */
     public java.lang.String getNetworkID() {
@@ -543,14 +622,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        networkID_ = s;
+        if (bs.isValidUtf8()) {
+          networkID_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string networkID = 1;</code>
+     * <code>required string networkID = 1;</code>
      * @return The bytes for networkID.
      */
     public com.google.protobuf.ByteString
@@ -567,7 +648,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string networkID = 1;</code>
+     * <code>required string networkID = 1;</code>
      * @param value The networkID to set.
      * @return This builder for chaining.
      */
@@ -580,7 +661,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string networkID = 1;</code>
+     * <code>required string networkID = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearNetworkID() {
@@ -590,23 +671,29 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string networkID = 1;</code>
+     * <code>required string networkID = 1;</code>
      * @param value The bytes for networkID to set.
      * @return This builder for chaining.
      */
     public Builder setNetworkIDBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
       networkID_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
 
-    private java.lang.Object type_ = "";
+    private java.lang.Object type_ = "Message";
     /**
-     * <code>string type = 2;</code>
+     * <code>required string type = 2 [default = "Message"];</code>
+     * @return Whether the type field is set.
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>required string type = 2 [default = "Message"];</code>
      * @return The type.
      */
     public java.lang.String getType() {
@@ -615,14 +702,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        type_ = s;
+        if (bs.isValidUtf8()) {
+          type_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string type = 2;</code>
+     * <code>required string type = 2 [default = "Message"];</code>
      * @return The bytes for type.
      */
     public com.google.protobuf.ByteString
@@ -639,7 +728,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string type = 2;</code>
+     * <code>required string type = 2 [default = "Message"];</code>
      * @param value The type to set.
      * @return This builder for chaining.
      */
@@ -652,7 +741,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string type = 2;</code>
+     * <code>required string type = 2 [default = "Message"];</code>
      * @return This builder for chaining.
      */
     public Builder clearType() {
@@ -662,14 +751,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string type = 2;</code>
+     * <code>required string type = 2 [default = "Message"];</code>
      * @param value The bytes for type to set.
      * @return This builder for chaining.
      */
     public Builder setTypeBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
       type_ = value;
       bitField0_ |= 0x00000002;
       onChanged();
@@ -678,7 +766,14 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object message_ = "";
     /**
-     * <code>string message = 3;</code>
+     * <code>required string message = 3;</code>
+     * @return Whether the message field is set.
+     */
+    public boolean hasMessage() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>required string message = 3;</code>
      * @return The message.
      */
     public java.lang.String getMessage() {
@@ -687,14 +782,16 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        message_ = s;
+        if (bs.isValidUtf8()) {
+          message_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string message = 3;</code>
+     * <code>required string message = 3;</code>
      * @return The bytes for message.
      */
     public com.google.protobuf.ByteString
@@ -711,7 +808,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string message = 3;</code>
+     * <code>required string message = 3;</code>
      * @param value The message to set.
      * @return This builder for chaining.
      */
@@ -724,7 +821,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string message = 3;</code>
+     * <code>required string message = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearMessage() {
@@ -734,14 +831,13 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string message = 3;</code>
+     * <code>required string message = 3;</code>
      * @param value The bytes for message to set.
      * @return This builder for chaining.
      */
     public Builder setMessageBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
       message_ = value;
       bitField0_ |= 0x00000004;
       onChanged();
@@ -773,7 +869,7 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Message>
+  @java.lang.Deprecated public static final com.google.protobuf.Parser<Message>
       PARSER = new com.google.protobuf.AbstractParser<Message>() {
     @java.lang.Override
     public Message parsePartialFrom(

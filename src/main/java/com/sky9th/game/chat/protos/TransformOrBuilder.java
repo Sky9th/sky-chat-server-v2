@@ -8,19 +8,34 @@ public interface TransformOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>double x = 1;</code>
+   * <code>required double x = 1;</code>
+   * @return Whether the x field is set.
+   */
+  boolean hasX();
+  /**
+   * <code>required double x = 1;</code>
    * @return The x.
    */
   double getX();
 
   /**
-   * <code>double y = 2;</code>
+   * <code>required double y = 2;</code>
+   * @return Whether the y field is set.
+   */
+  boolean hasY();
+  /**
+   * <code>required double y = 2;</code>
    * @return The y.
    */
   double getY();
 
   /**
-   * <code>double z = 3;</code>
+   * <code>required double z = 3;</code>
+   * @return Whether the z field is set.
+   */
+  boolean hasZ();
+  /**
+   * <code>required double z = 3;</code>
    * @return The z.
    */
   double getZ();

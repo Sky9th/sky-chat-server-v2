@@ -38,10 +38,19 @@ private static final long serialVersionUID = 0L;
             com.sky9th.game.chat.protos.Transform.class, com.sky9th.game.chat.protos.Transform.Builder.class);
   }
 
+  private int bitField0_;
   public static final int X_FIELD_NUMBER = 1;
   private double x_ = 0D;
   /**
-   * <code>double x = 1;</code>
+   * <code>required double x = 1;</code>
+   * @return Whether the x field is set.
+   */
+  @java.lang.Override
+  public boolean hasX() {
+    return ((bitField0_ & 0x00000001) != 0);
+  }
+  /**
+   * <code>required double x = 1;</code>
    * @return The x.
    */
   @java.lang.Override
@@ -52,7 +61,15 @@ private static final long serialVersionUID = 0L;
   public static final int Y_FIELD_NUMBER = 2;
   private double y_ = 0D;
   /**
-   * <code>double y = 2;</code>
+   * <code>required double y = 2;</code>
+   * @return Whether the y field is set.
+   */
+  @java.lang.Override
+  public boolean hasY() {
+    return ((bitField0_ & 0x00000002) != 0);
+  }
+  /**
+   * <code>required double y = 2;</code>
    * @return The y.
    */
   @java.lang.Override
@@ -63,7 +80,15 @@ private static final long serialVersionUID = 0L;
   public static final int Z_FIELD_NUMBER = 3;
   private double z_ = 0D;
   /**
-   * <code>double z = 3;</code>
+   * <code>required double z = 3;</code>
+   * @return Whether the z field is set.
+   */
+  @java.lang.Override
+  public boolean hasZ() {
+    return ((bitField0_ & 0x00000004) != 0);
+  }
+  /**
+   * <code>required double z = 3;</code>
    * @return The z.
    */
   @java.lang.Override
@@ -78,6 +103,18 @@ private static final long serialVersionUID = 0L;
     if (isInitialized == 1) return true;
     if (isInitialized == 0) return false;
 
+    if (!hasX()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
+    if (!hasY()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
+    if (!hasZ()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
     memoizedIsInitialized = 1;
     return true;
   }
@@ -85,13 +122,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       output.writeDouble(1, x_);
     }
-    if (java.lang.Double.doubleToRawLongBits(y_) != 0) {
+    if (((bitField0_ & 0x00000002) != 0)) {
       output.writeDouble(2, y_);
     }
-    if (java.lang.Double.doubleToRawLongBits(z_) != 0) {
+    if (((bitField0_ & 0x00000004) != 0)) {
       output.writeDouble(3, z_);
     }
     getUnknownFields().writeTo(output);
@@ -103,15 +140,15 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (java.lang.Double.doubleToRawLongBits(x_) != 0) {
+    if (((bitField0_ & 0x00000001) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeDoubleSize(1, x_);
     }
-    if (java.lang.Double.doubleToRawLongBits(y_) != 0) {
+    if (((bitField0_ & 0x00000002) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeDoubleSize(2, y_);
     }
-    if (java.lang.Double.doubleToRawLongBits(z_) != 0) {
+    if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeDoubleSize(3, z_);
     }
@@ -130,15 +167,24 @@ private static final long serialVersionUID = 0L;
     }
     com.sky9th.game.chat.protos.Transform other = (com.sky9th.game.chat.protos.Transform) obj;
 
-    if (java.lang.Double.doubleToLongBits(getX())
-        != java.lang.Double.doubleToLongBits(
-            other.getX())) return false;
-    if (java.lang.Double.doubleToLongBits(getY())
-        != java.lang.Double.doubleToLongBits(
-            other.getY())) return false;
-    if (java.lang.Double.doubleToLongBits(getZ())
-        != java.lang.Double.doubleToLongBits(
-            other.getZ())) return false;
+    if (hasX() != other.hasX()) return false;
+    if (hasX()) {
+      if (java.lang.Double.doubleToLongBits(getX())
+          != java.lang.Double.doubleToLongBits(
+              other.getX())) return false;
+    }
+    if (hasY() != other.hasY()) return false;
+    if (hasY()) {
+      if (java.lang.Double.doubleToLongBits(getY())
+          != java.lang.Double.doubleToLongBits(
+              other.getY())) return false;
+    }
+    if (hasZ() != other.hasZ()) return false;
+    if (hasZ()) {
+      if (java.lang.Double.doubleToLongBits(getZ())
+          != java.lang.Double.doubleToLongBits(
+              other.getZ())) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -150,15 +196,21 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + X_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        java.lang.Double.doubleToLongBits(getX()));
-    hash = (37 * hash) + Y_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        java.lang.Double.doubleToLongBits(getY()));
-    hash = (37 * hash) + Z_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        java.lang.Double.doubleToLongBits(getZ()));
+    if (hasX()) {
+      hash = (37 * hash) + X_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getX()));
+    }
+    if (hasY()) {
+      hash = (37 * hash) + Y_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getY()));
+    }
+    if (hasZ()) {
+      hash = (37 * hash) + Z_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          java.lang.Double.doubleToLongBits(getZ()));
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -326,15 +378,20 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartial0(com.sky9th.game.chat.protos.Transform result) {
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.x_ = x_;
+        to_bitField0_ |= 0x00000001;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.y_ = y_;
+        to_bitField0_ |= 0x00000002;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.z_ = z_;
+        to_bitField0_ |= 0x00000004;
       }
+      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -381,13 +438,13 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.sky9th.game.chat.protos.Transform other) {
       if (other == com.sky9th.game.chat.protos.Transform.getDefaultInstance()) return this;
-      if (other.getX() != 0D) {
+      if (other.hasX()) {
         setX(other.getX());
       }
-      if (other.getY() != 0D) {
+      if (other.hasY()) {
         setY(other.getY());
       }
-      if (other.getZ() != 0D) {
+      if (other.hasZ()) {
         setZ(other.getZ());
       }
       this.mergeUnknownFields(other.getUnknownFields());
@@ -397,6 +454,15 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public final boolean isInitialized() {
+      if (!hasX()) {
+        return false;
+      }
+      if (!hasY()) {
+        return false;
+      }
+      if (!hasZ()) {
+        return false;
+      }
       return true;
     }
 
@@ -450,7 +516,15 @@ private static final long serialVersionUID = 0L;
 
     private double x_ ;
     /**
-     * <code>double x = 1;</code>
+     * <code>required double x = 1;</code>
+     * @return Whether the x field is set.
+     */
+    @java.lang.Override
+    public boolean hasX() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>required double x = 1;</code>
      * @return The x.
      */
     @java.lang.Override
@@ -458,7 +532,7 @@ private static final long serialVersionUID = 0L;
       return x_;
     }
     /**
-     * <code>double x = 1;</code>
+     * <code>required double x = 1;</code>
      * @param value The x to set.
      * @return This builder for chaining.
      */
@@ -470,7 +544,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>double x = 1;</code>
+     * <code>required double x = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearX() {
@@ -482,7 +556,15 @@ private static final long serialVersionUID = 0L;
 
     private double y_ ;
     /**
-     * <code>double y = 2;</code>
+     * <code>required double y = 2;</code>
+     * @return Whether the y field is set.
+     */
+    @java.lang.Override
+    public boolean hasY() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>required double y = 2;</code>
      * @return The y.
      */
     @java.lang.Override
@@ -490,7 +572,7 @@ private static final long serialVersionUID = 0L;
       return y_;
     }
     /**
-     * <code>double y = 2;</code>
+     * <code>required double y = 2;</code>
      * @param value The y to set.
      * @return This builder for chaining.
      */
@@ -502,7 +584,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>double y = 2;</code>
+     * <code>required double y = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearY() {
@@ -514,7 +596,15 @@ private static final long serialVersionUID = 0L;
 
     private double z_ ;
     /**
-     * <code>double z = 3;</code>
+     * <code>required double z = 3;</code>
+     * @return Whether the z field is set.
+     */
+    @java.lang.Override
+    public boolean hasZ() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>required double z = 3;</code>
      * @return The z.
      */
     @java.lang.Override
@@ -522,7 +612,7 @@ private static final long serialVersionUID = 0L;
       return z_;
     }
     /**
-     * <code>double z = 3;</code>
+     * <code>required double z = 3;</code>
      * @param value The z to set.
      * @return This builder for chaining.
      */
@@ -534,7 +624,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>double z = 3;</code>
+     * <code>required double z = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearZ() {
@@ -569,7 +659,7 @@ private static final long serialVersionUID = 0L;
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Transform>
+  @java.lang.Deprecated public static final com.google.protobuf.Parser<Transform>
       PARSER = new com.google.protobuf.AbstractParser<Transform>() {
     @java.lang.Override
     public Transform parsePartialFrom(

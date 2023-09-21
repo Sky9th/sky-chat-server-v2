@@ -33,12 +33,12 @@ public final class PlayerInfoProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\020PlayerInfo.proto\022\017Sky9th.Protobuf\"\\\n\nP" +
-      "layerInfo\022\021\n\tnetworkID\030\001 \001(\t\022\014\n\004type\030\002 \001" +
-      "(\t\022-\n\ttransform\030\003 \001(\0132\032.Sky9th.Protobuf." +
-      "Transform\",\n\tTransform\022\t\n\001x\030\001 \001(\001\022\t\n\001y\030\002" +
-      " \001(\001\022\t\n\001z\030\003 \001(\001B1\n\033com.sky9th.game.chat." +
-      "protosB\020PlayerInfoProtosP\001b\006proto3"
+      "\n\020PlayerInfo.proto\022\017Sky9th.Protobuf\"h\n\nP" +
+      "layerInfo\022\021\n\tnetworkID\030\001 \002(\t\022\030\n\004type\030\002 \002" +
+      "(\t:\nPlayerInfo\022-\n\ttransform\030\003 \002(\0132\032.Sky9" +
+      "th.Protobuf.Transform\",\n\tTransform\022\t\n\001x\030" +
+      "\001 \002(\001\022\t\n\001y\030\002 \002(\001\022\t\n\001z\030\003 \002(\001B1\n\033com.sky9t" +
+      "h.game.chat.protosB\020PlayerInfoProtosP\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

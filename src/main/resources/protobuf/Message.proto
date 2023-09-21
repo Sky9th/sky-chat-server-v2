@@ -1,4 +1,4 @@
-syntax = "proto3";
+syntax = "proto2";
 
 package Sky9th.Protobuf;
 
@@ -7,7 +7,7 @@ option java_package = "com.sky9th.game.chat.protos";
 option java_outer_classname = "MessageProtos";
 
 message Message {
-    string networkID = 1;
-    string type = 2;
-    string message = 3;
+    required string networkID = 1;
+    required string type = 2 [default = "Message"];
+    required string message = 3;
 }

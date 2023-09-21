@@ -9,37 +9,43 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.handler.timeout.IdleStateHandler;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
-import java.nio.ByteOrder;
+import org.springframework.stereotype.Service;
 
 @Slf4j
+@Service
+@AllArgsConstructor
 public class WebSocketServer {
+
+    private final HttpRequestHandler httpRequestHandler;
+    private final WebSocketHandler webSocketHandler;
+    private final HeartBeatHandler heartBeatHandler;
 
     public void run() throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup(); // (1)
         EventLoopGroup workerGroup = new NioEventLoopGroup();
+
         try {
             ServerBootstrap b = new ServerBootstrap(); // (2)
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class) // (3)
-                    .childOption(ChannelOption.SO_RCVBUF, 65535)
+                    //.childOption(ChannelOption.SO_RCVBUF, 65535)
                     .childHandler(new ChannelInitializer<SocketChannel>() { // (4)
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline().addLast("idle-handler", new IdleStateHandler(5,5,5));
-                            ch.pipeline().addLast("heart-beat", new HeartBeatHandler());
+                            ch.pipeline().addLast("heart-beat", heartBeatHandler);
                             ch.pipeline().addLast("http-codec", new HttpServerCodec());
                             ch.pipeline().addLast("aggregator", new HttpObjectAggregator(65535));
                             ch.pipeline().addLast("http-chunked", new ChunkedWriteHandler());
-                            ch.pipeline().addLast("http-request", new HttpRequestHandler());
+                            ch.pipeline().addLast("http-request", httpRequestHandler);
+                            ch.pipeline().addLast("websocketHandler", webSocketHandler);
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)          // (5)

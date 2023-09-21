@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Config ###
-**/resources/application.*.yaml
+**/resources/application-*.yaml

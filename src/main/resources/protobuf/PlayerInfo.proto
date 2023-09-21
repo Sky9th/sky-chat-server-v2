@@ -1,4 +1,4 @@
-syntax = "proto3";
+syntax = "proto2";
 
 package Sky9th.Protobuf;
 
@@ -6,14 +6,15 @@ option java_multiple_files = true;
 option java_package = "com.sky9th.game.chat.protos";
 option java_outer_classname = "PlayerInfoProtos";
 
+
 message PlayerInfo {
-    string networkID = 1;
-    string type = 2;
-    Transform transform = 3;
+    required string networkID = 1;
+    required string type = 2 [default = "PlayerInfo"];
+    required Transform transform = 3;
 }
 
 message Transform {
-    double x = 1;
-    double y = 2;
-    double z = 3;
+    required double x = 1;
+    required double y = 2;
+    required double z = 3;
 }

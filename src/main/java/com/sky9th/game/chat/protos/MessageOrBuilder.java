@@ -8,36 +8,51 @@ public interface MessageOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string networkID = 1;</code>
+   * <code>required string networkID = 1;</code>
+   * @return Whether the networkID field is set.
+   */
+  boolean hasNetworkID();
+  /**
+   * <code>required string networkID = 1;</code>
    * @return The networkID.
    */
   java.lang.String getNetworkID();
   /**
-   * <code>string networkID = 1;</code>
+   * <code>required string networkID = 1;</code>
    * @return The bytes for networkID.
    */
   com.google.protobuf.ByteString
       getNetworkIDBytes();
 
   /**
-   * <code>string type = 2;</code>
+   * <code>required string type = 2 [default = "Message"];</code>
+   * @return Whether the type field is set.
+   */
+  boolean hasType();
+  /**
+   * <code>required string type = 2 [default = "Message"];</code>
    * @return The type.
    */
   java.lang.String getType();
   /**
-   * <code>string type = 2;</code>
+   * <code>required string type = 2 [default = "Message"];</code>
    * @return The bytes for type.
    */
   com.google.protobuf.ByteString
       getTypeBytes();
 
   /**
-   * <code>string message = 3;</code>
+   * <code>required string message = 3;</code>
+   * @return Whether the message field is set.
+   */
+  boolean hasMessage();
+  /**
+   * <code>required string message = 3;</code>
    * @return The message.
    */
   java.lang.String getMessage();
   /**
-   * <code>string message = 3;</code>
+   * <code>required string message = 3;</code>
    * @return The bytes for message.
    */
   com.google.protobuf.ByteString
