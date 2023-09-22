@@ -41,11 +41,11 @@ private static final long serialVersionUID = 0L;
   }
 
   private int bitField0_;
-  public static final int TYPE_FIELD_NUMBER = 2;
+  public static final int TYPE_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
   private volatile java.lang.Object type_ = "PlayerList";
   /**
-   * <code>optional string type = 2 [default = "PlayerList"];</code>
+   * <code>optional string type = 1 [default = "PlayerList"];</code>
    * @return Whether the type field is set.
    */
   @java.lang.Override
@@ -53,7 +53,7 @@ private static final long serialVersionUID = 0L;
     return ((bitField0_ & 0x00000001) != 0);
   }
   /**
-   * <code>optional string type = 2 [default = "PlayerList"];</code>
+   * <code>optional string type = 1 [default = "PlayerList"];</code>
    * @return The type.
    */
   @java.lang.Override
@@ -72,7 +72,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>optional string type = 2 [default = "PlayerList"];</code>
+   * <code>optional string type = 1 [default = "PlayerList"];</code>
    * @return The bytes for type.
    */
   @java.lang.Override
@@ -90,18 +90,18 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int PLAYERINFO_FIELD_NUMBER = 3;
+  public static final int PLAYERINFO_FIELD_NUMBER = 2;
   @SuppressWarnings("serial")
   private java.util.List<com.sky9th.game.chat.protos.PlayerInfo> playerInfo_;
   /**
-   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
    */
   @java.lang.Override
   public java.util.List<com.sky9th.game.chat.protos.PlayerInfo> getPlayerInfoList() {
     return playerInfo_;
   }
   /**
-   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
    */
   @java.lang.Override
   public java.util.List<? extends com.sky9th.game.chat.protos.PlayerInfoOrBuilder> 
@@ -109,21 +109,21 @@ private static final long serialVersionUID = 0L;
     return playerInfo_;
   }
   /**
-   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
    */
   @java.lang.Override
   public int getPlayerInfoCount() {
     return playerInfo_.size();
   }
   /**
-   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
    */
   @java.lang.Override
   public com.sky9th.game.chat.protos.PlayerInfo getPlayerInfo(int index) {
     return playerInfo_.get(index);
   }
   /**
-   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
    */
   @java.lang.Override
   public com.sky9th.game.chat.protos.PlayerInfoOrBuilder getPlayerInfoOrBuilder(
@@ -152,10 +152,10 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (((bitField0_ & 0x00000001) != 0)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, type_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, type_);
     }
     for (int i = 0; i < playerInfo_.size(); i++) {
-      output.writeMessage(3, playerInfo_.get(i));
+      output.writeMessage(2, playerInfo_.get(i));
     }
     getUnknownFields().writeTo(output);
   }
@@ -167,11 +167,11 @@ private static final long serialVersionUID = 0L;
 
     size = 0;
     if (((bitField0_ & 0x00000001) != 0)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, type_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, type_);
     }
     for (int i = 0; i < playerInfo_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(3, playerInfo_.get(i));
+        .computeMessageSize(2, playerInfo_.get(i));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -513,12 +513,12 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 18: {
+            case 10: {
               type_ = input.readBytes();
               bitField0_ |= 0x00000001;
               break;
-            } // case 18
-            case 26: {
+            } // case 10
+            case 18: {
               com.sky9th.game.chat.protos.PlayerInfo m =
                   input.readMessage(
                       com.sky9th.game.chat.protos.PlayerInfo.PARSER,
@@ -530,7 +530,7 @@ private static final long serialVersionUID = 0L;
                 playerInfoBuilder_.addMessage(m);
               }
               break;
-            } // case 26
+            } // case 18
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -550,14 +550,14 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object type_ = "PlayerList";
     /**
-     * <code>optional string type = 2 [default = "PlayerList"];</code>
+     * <code>optional string type = 1 [default = "PlayerList"];</code>
      * @return Whether the type field is set.
      */
     public boolean hasType() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional string type = 2 [default = "PlayerList"];</code>
+     * <code>optional string type = 1 [default = "PlayerList"];</code>
      * @return The type.
      */
     public java.lang.String getType() {
@@ -575,7 +575,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional string type = 2 [default = "PlayerList"];</code>
+     * <code>optional string type = 1 [default = "PlayerList"];</code>
      * @return The bytes for type.
      */
     public com.google.protobuf.ByteString
@@ -592,7 +592,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>optional string type = 2 [default = "PlayerList"];</code>
+     * <code>optional string type = 1 [default = "PlayerList"];</code>
      * @param value The type to set.
      * @return This builder for chaining.
      */
@@ -605,7 +605,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>optional string type = 2 [default = "PlayerList"];</code>
+     * <code>optional string type = 1 [default = "PlayerList"];</code>
      * @return This builder for chaining.
      */
     public Builder clearType() {
@@ -615,7 +615,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>optional string type = 2 [default = "PlayerList"];</code>
+     * <code>optional string type = 1 [default = "PlayerList"];</code>
      * @param value The bytes for type to set.
      * @return This builder for chaining.
      */
@@ -641,7 +641,7 @@ private static final long serialVersionUID = 0L;
         com.sky9th.game.chat.protos.PlayerInfo, com.sky9th.game.chat.protos.PlayerInfo.Builder, com.sky9th.game.chat.protos.PlayerInfoOrBuilder> playerInfoBuilder_;
 
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public java.util.List<com.sky9th.game.chat.protos.PlayerInfo> getPlayerInfoList() {
       if (playerInfoBuilder_ == null) {
@@ -651,7 +651,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public int getPlayerInfoCount() {
       if (playerInfoBuilder_ == null) {
@@ -661,7 +661,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public com.sky9th.game.chat.protos.PlayerInfo getPlayerInfo(int index) {
       if (playerInfoBuilder_ == null) {
@@ -671,7 +671,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public Builder setPlayerInfo(
         int index, com.sky9th.game.chat.protos.PlayerInfo value) {
@@ -688,7 +688,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public Builder setPlayerInfo(
         int index, com.sky9th.game.chat.protos.PlayerInfo.Builder builderForValue) {
@@ -702,7 +702,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public Builder addPlayerInfo(com.sky9th.game.chat.protos.PlayerInfo value) {
       if (playerInfoBuilder_ == null) {
@@ -718,7 +718,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public Builder addPlayerInfo(
         int index, com.sky9th.game.chat.protos.PlayerInfo value) {
@@ -735,7 +735,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public Builder addPlayerInfo(
         com.sky9th.game.chat.protos.PlayerInfo.Builder builderForValue) {
@@ -749,7 +749,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public Builder addPlayerInfo(
         int index, com.sky9th.game.chat.protos.PlayerInfo.Builder builderForValue) {
@@ -763,7 +763,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public Builder addAllPlayerInfo(
         java.lang.Iterable<? extends com.sky9th.game.chat.protos.PlayerInfo> values) {
@@ -778,7 +778,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public Builder clearPlayerInfo() {
       if (playerInfoBuilder_ == null) {
@@ -791,7 +791,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public Builder removePlayerInfo(int index) {
       if (playerInfoBuilder_ == null) {
@@ -804,14 +804,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public com.sky9th.game.chat.protos.PlayerInfo.Builder getPlayerInfoBuilder(
         int index) {
       return getPlayerInfoFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public com.sky9th.game.chat.protos.PlayerInfoOrBuilder getPlayerInfoOrBuilder(
         int index) {
@@ -821,7 +821,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public java.util.List<? extends com.sky9th.game.chat.protos.PlayerInfoOrBuilder> 
          getPlayerInfoOrBuilderList() {
@@ -832,14 +832,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public com.sky9th.game.chat.protos.PlayerInfo.Builder addPlayerInfoBuilder() {
       return getPlayerInfoFieldBuilder().addBuilder(
           com.sky9th.game.chat.protos.PlayerInfo.getDefaultInstance());
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public com.sky9th.game.chat.protos.PlayerInfo.Builder addPlayerInfoBuilder(
         int index) {
@@ -847,7 +847,7 @@ private static final long serialVersionUID = 0L;
           index, com.sky9th.game.chat.protos.PlayerInfo.getDefaultInstance());
     }
     /**
-     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+     * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
      */
     public java.util.List<com.sky9th.game.chat.protos.PlayerInfo.Builder> 
          getPlayerInfoBuilderList() {

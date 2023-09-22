@@ -18,4 +18,9 @@ public class DataPool {
     public Dictionary<ChannelId, Channel> connections = new Hashtable<>();
     public Dictionary<ChannelId, PlayerInfo> players = new Hashtable<>();
 
+    public void close(ChannelId channelId) {
+        connections.remove(channelId);
+        players.remove(channelId);
+    }
+
 }

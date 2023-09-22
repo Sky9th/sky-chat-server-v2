@@ -8,42 +8,42 @@ public interface PlayerListOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>optional string type = 2 [default = "PlayerList"];</code>
+   * <code>optional string type = 1 [default = "PlayerList"];</code>
    * @return Whether the type field is set.
    */
   boolean hasType();
   /**
-   * <code>optional string type = 2 [default = "PlayerList"];</code>
+   * <code>optional string type = 1 [default = "PlayerList"];</code>
    * @return The type.
    */
   java.lang.String getType();
   /**
-   * <code>optional string type = 2 [default = "PlayerList"];</code>
+   * <code>optional string type = 1 [default = "PlayerList"];</code>
    * @return The bytes for type.
    */
   com.google.protobuf.ByteString
       getTypeBytes();
 
   /**
-   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
    */
   java.util.List<com.sky9th.game.chat.protos.PlayerInfo> 
       getPlayerInfoList();
   /**
-   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
    */
   com.sky9th.game.chat.protos.PlayerInfo getPlayerInfo(int index);
   /**
-   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
    */
   int getPlayerInfoCount();
   /**
-   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
    */
   java.util.List<? extends com.sky9th.game.chat.protos.PlayerInfoOrBuilder> 
       getPlayerInfoOrBuilderList();
   /**
-   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 3;</code>
+   * <code>repeated .Sky9th.Protobuf.PlayerInfo playerInfo = 2;</code>
    */
   com.sky9th.game.chat.protos.PlayerInfoOrBuilder getPlayerInfoOrBuilder(
       int index);

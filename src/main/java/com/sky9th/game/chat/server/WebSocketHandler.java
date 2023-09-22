@@ -67,11 +67,10 @@ public class WebSocketHandler extends ChannelInboundHandlerAdapter {
                 parseMessage(ctx);
             }
         } else if (msg instanceof CloseWebSocketFrame) {
-            dataPool.connections.remove(ctx.channel().id());
+            dataPool.close(ctx.channel().id());
             ctx.close();
         } else if (msg instanceof TextWebSocketFrame) {
             log.info(msg.toString());
-            ctx.writeAndFlush("test");
         } else {
             throw new RuntimeException("unknown data type");
         }
@@ -86,7 +85,7 @@ public class WebSocketHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         super.exceptionCaught(ctx, cause);
-        dataPool.connections.remove(ctx.channel().id());
+        dataPool.close(ctx.channel().id());
         ctx.close();
     }
 
@@ -114,7 +113,6 @@ public class WebSocketHandler extends ChannelInboundHandlerAdapter {
         }
         log.info("receive msg from: " + ctx.channel() + " ,length:" + readLength + " ,times:" + readTimes);
         acceptLength = 0;
-        ctx.writeAndFlush("complete");
         ctx.fireChannelReadComplete();
     }
 }

@@ -3,8 +3,10 @@ package com.sky9th.game.chat.server;
 import com.sky9th.game.chat.protos.PlayerInfo;
 import com.sky9th.game.chat.protos.PlayerList;
 import com.sky9th.game.chat.services.DataPool;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelId;
+import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -52,7 +54,8 @@ public class WebSocketRunner  {
 
         while (values.hasMoreElements()) {
             Channel value = values.nextElement();
-            value.writeAndFlush(playerList.toByteArray());
+            value.writeAndFlush(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(playerList.toByteArray())));
+            log.info(playerList.toString());
         }
     }
 }

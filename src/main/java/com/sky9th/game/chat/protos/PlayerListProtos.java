@@ -29,8 +29,8 @@ public final class PlayerListProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\020PlayerList.proto\022\017Sky9th.Protobuf\032\020Pla" +
-      "yerInfo.proto\"W\n\nPlayerList\022\030\n\004type\030\002 \001(" +
-      "\t:\nPlayerList\022/\n\nplayerInfo\030\003 \003(\0132\033.Sky9" +
+      "yerInfo.proto\"W\n\nPlayerList\022\030\n\004type\030\001 \001(" +
+      "\t:\nPlayerList\022/\n\nplayerInfo\030\002 \003(\0132\033.Sky9" +
       "th.Protobuf.PlayerInfoB1\n\033com.sky9th.gam" +
       "e.chat.protosB\020PlayerListProtosP\001"
     };

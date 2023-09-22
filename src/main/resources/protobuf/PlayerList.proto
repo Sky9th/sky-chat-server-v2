@@ -9,6 +9,6 @@ option java_outer_classname = "PlayerListProtos";
 import "PlayerInfo.proto";
 
 message PlayerList {
-    optional string type = 2 [default = "PlayerList"];
-    repeated PlayerInfo playerInfo = 3;
+    optional string type = 1 [default = "PlayerList"];
+    repeated PlayerInfo playerInfo = 2;
 }
