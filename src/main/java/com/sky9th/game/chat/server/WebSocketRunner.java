@@ -27,6 +27,7 @@ public class WebSocketRunner  {
 
     private final WebSocketServer webSocketServer;
     private final DataPool dataPool;
+    private final WebSocketWriter webSocketWriter;
 
     @Async
     @Bean
@@ -42,20 +43,13 @@ public class WebSocketRunner  {
     @Scheduled(fixedDelay = 1000)
     public void broadcast () {
         Enumeration<Channel> values = dataPool.connections.elements();
-
-        List<PlayerInfo> playerInfoList = new ArrayList<>();
-        Dictionary<ChannelId, PlayerInfo> players = dataPool.getPlayers();
-        Enumeration<PlayerInfo> playerInfoEnumeration = players.elements();
-        while (playerInfoEnumeration.hasMoreElements()) {
-            PlayerInfo playerInfo = playerInfoEnumeration.nextElement();
-            playerInfoList.add(playerInfo);
-        }
-        PlayerList playerList = PlayerList.newBuilder().addAllPlayerInfo(playerInfoList).build();
-
-        while (values.hasMoreElements()) {
-            Channel value = values.nextElement();
-            value.writeAndFlush(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(playerList.toByteArray())));
-            log.info(playerList.toString());
+        byte[] broadcastData = webSocketWriter.getBroadcastData();
+        if (broadcastData.length > 0) {
+            while (values.hasMoreElements()) {
+                Channel value = values.nextElement();
+                value.writeAndFlush(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(broadcastData)));
+                log.info("send broadcast data length:" + broadcastData.length);
+            }
         }
     }
 }

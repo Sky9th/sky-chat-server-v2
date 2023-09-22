@@ -14,7 +14,6 @@ import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import io.netty.handler.timeout.IdleStateHandler;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +23,7 @@ import org.springframework.stereotype.Service;
 public class WebSocketServer {
 
     private final HttpRequestHandler httpRequestHandler;
-    private final WebSocketHandler webSocketHandler;
+    private final WebSocketReader webSocketReader;
     private final HeartBeatHandler heartBeatHandler;
 
     public void run() throws Exception {
@@ -45,7 +44,7 @@ public class WebSocketServer {
                             ch.pipeline().addLast("aggregator", new HttpObjectAggregator(65535));
                             ch.pipeline().addLast("http-chunked", new ChunkedWriteHandler());
                             ch.pipeline().addLast("http-request", httpRequestHandler);
-                            ch.pipeline().addLast("websocketHandler", webSocketHandler);
+                            ch.pipeline().addLast("websocketHandler", webSocketReader);
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)          // (5)

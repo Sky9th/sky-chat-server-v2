@@ -24,7 +24,7 @@ import java.lang.reflect.InvocationTargetException;
 @Service
 @RequiredArgsConstructor
 @ChannelHandler.Sharable
-public class WebSocketHandler extends ChannelInboundHandlerAdapter {
+public class WebSocketReader extends ChannelInboundHandlerAdapter {
 
     private int acceptLength = 0;
     private int totalLength = 0;
