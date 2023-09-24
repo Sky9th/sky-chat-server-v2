@@ -36,7 +36,6 @@ public class WebSocketReader extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws IOException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        log.info(msg.toString());
         if (msg instanceof BinaryWebSocketFrame) {
             ByteBuf buf = ((BinaryWebSocketFrame) msg).content();
             byte[] currentBytes = new byte[buf.capacity()];
@@ -46,8 +45,6 @@ public class WebSocketReader extends ChannelInboundHandlerAdapter {
             System.arraycopy(currentBytes, 0, totalLengthBytes, 0, totalLengthBytes.length);
 
             totalLength = Integer.parseInt(new String(totalLengthBytes));
-            log.info(String.valueOf(totalLength));
-            //log.info("total length:" + String.valueOf(totalLength) + ",current length:" + String.valueOf(buf.capacity()) + ",accept length:" + acceptLength);
             completeDataBytes = new byte[totalLength];
 
             System.arraycopy(currentBytes, totalLengthBytes.length, completeDataBytes, acceptLength, currentBytes.length - totalLengthBytes.length);
@@ -79,7 +76,6 @@ public class WebSocketReader extends ChannelInboundHandlerAdapter {
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
         super.channelReadComplete(ctx);
-        log.info("complete");
     }
 
     @Override
@@ -95,14 +91,20 @@ public class WebSocketReader extends ChannelInboundHandlerAdapter {
         while (readLength < acceptLength) {
             int currentLength = 0;
             byte[] lengthBytes = new byte[8];
-            System.arraycopy(completeDataBytes, 0, lengthBytes, 0, lengthBytes.length);
+            System.arraycopy(completeDataBytes, currentLength, lengthBytes, 0, lengthBytes.length);
             currentLength += lengthBytes.length;
             int length = Integer.parseInt(new String(lengthBytes));
-            byte[] dataBytes = new byte[length];
-            System.arraycopy(completeDataBytes, lengthBytes.length, dataBytes, 0, dataBytes.length);
+
+
+            byte[] typeBytes = new byte[12];
+            System.arraycopy(completeDataBytes, currentLength, typeBytes, 0, typeBytes.length);
+            currentLength += typeBytes.length;
+            String type = new String(typeBytes);
+
+            byte[] dataBytes = new byte[length - typeBytes.length];
+            System.arraycopy(completeDataBytes, currentLength, dataBytes, 0, dataBytes.length);
             currentLength += dataBytes.length;
-            Message message = Message.parseFrom(dataBytes);
-            switch (message.getType()) {
+            switch (type.replace("0", "")) {
                 case "PlayerInfo":
                     PlayerInfo obj = PlayerInfo.parseFrom(dataBytes);
                     playerService.playerHandler(obj, ctx.channel().id());

@@ -1,33 +1,46 @@
 package com.sky9th.game.chat.server;
 
+import com.google.protobuf.Any;
+import com.google.protobuf.Message;
 import com.sky9th.game.chat.protos.PlayerInfo;
 import com.sky9th.game.chat.services.DataPool;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class WebSocketWriter {
 
     private final DataPool dataPool;
 
-    public byte[] write (List<byte[]> dataList) {
+    public byte[] write (List<Object> dataList) {
         int totalLength = 0;
         byte[] totalDataBytes = new byte[0];
-        for (byte[] item : dataList) {
+        for (Object obj: dataList) {
+            Message msg = (Message) obj;
+            byte[] item = msg.toByteArray();
             int currentLength = item.length;
 
             String currentLengthStr = String.format("%08d", currentLength);
+            String[] typeArray = msg.getClass().getName().split("\\.");
+            StringBuilder typeStr = new StringBuilder(typeArray[typeArray.length - 1]);
+            while (typeStr.length() < 12) {
+                typeStr.insert(0, "0");
+            }
 
             byte[] currentLengthBytes =  currentLengthStr.getBytes();
-            byte[] currentDataBytes = new byte[currentLengthBytes.length + item.length];
+            byte[] typeBytes =  typeStr.toString().getBytes();
+            byte[] currentDataBytes = new byte[currentLengthBytes.length + item.length + typeBytes.length];
 
             System.arraycopy(currentLengthBytes, 0, currentDataBytes, 0, currentLengthBytes.length);
-            System.arraycopy(item, 0, currentDataBytes, currentLengthBytes.length, item.length);
+            System.arraycopy(typeBytes, 0, currentDataBytes, currentLengthBytes.length, typeBytes.length);
+            System.arraycopy(item, 0, currentDataBytes, currentLengthBytes.length + typeBytes.length, item.length);
 
             totalLength += currentDataBytes.length;
 
@@ -52,13 +65,13 @@ public class WebSocketWriter {
     }
 
     public byte[] getBroadcastData() {
-        List<byte[]> dataList = new ArrayList<>();
+        List<Object> dataList = new ArrayList<>();
         Enumeration<PlayerInfo> enumeration = dataPool.getPlayers().elements();
 
         while (enumeration.hasMoreElements()) {
             PlayerInfo playerInfo = enumeration.nextElement();
-            dataList.add(playerInfo.toByteArray());
-            dataList.add(playerInfo.toByteArray());
+            log.info(playerInfo.getNetworkID());
+            dataList.add(playerInfo);
         }
         return write(dataList);
     }
