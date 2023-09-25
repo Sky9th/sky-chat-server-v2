@@ -80,9 +80,13 @@ public class WebSocketReader extends ChannelInboundHandlerAdapter {
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        super.exceptionCaught(ctx, cause);
-        dataPool.close(ctx.channel().id());
-        ctx.close();
+        log.error(cause.getMessage());
+        acceptLength = 0;
+        totalLength = 0;
+        completeDataBytes = new byte[0];
+        //super.exceptionCaught(ctx, cause);
+        //dataPool.close(ctx.channel().id());
+        //ctx.close();
     }
 
     private void parseMessage (ChannelHandlerContext ctx) throws InvalidProtocolBufferException {

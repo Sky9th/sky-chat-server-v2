@@ -40,7 +40,7 @@ public class WebSocketRunner  {
         }
     }
 
-    @Scheduled(fixedDelay = 1000)
+    @Scheduled(fixedDelay = 30)
     public void broadcast () {
         Enumeration<Channel> values = dataPool.connections.elements();
         byte[] broadcastData = webSocketWriter.getBroadcastData();
