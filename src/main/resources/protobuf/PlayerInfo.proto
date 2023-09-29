@@ -3,8 +3,8 @@ syntax = "proto2";
 package Sky9th.Protobuf;
 
 option java_multiple_files = true;
-option java_package = "com.sky9th.game.chat.protos";
-option java_outer_classname = "PlayerInfoProtos";
+option java_package = "com.sky9th.game.chat.proto";
+option java_outer_classname = "PlayerInfoProto";
 
 
 message PlayerInfo {

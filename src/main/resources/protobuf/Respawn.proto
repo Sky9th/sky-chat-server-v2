@@ -1,0 +1,17 @@
+syntax = "proto2";
+
+package Sky9th.Protobuf;
+
+option java_multiple_files = true;
+option java_package = "com.sky9th.game.chat.proto";
+option java_outer_classname = "RespawnProto";
+
+enum RespawnType {
+    Player = 1;
+}
+
+message Respawn {
+    required string networkID = 1;
+    required string type = 2 [default = "Respawn"];
+    required RespawnType respawnType = 3;
+}

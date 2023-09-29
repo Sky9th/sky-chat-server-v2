@@ -1,14 +1,16 @@
 package com.sky9th.game.chat.server;
 
-import com.google.protobuf.Any;
 import com.google.protobuf.Message;
-import com.sky9th.game.chat.protos.PlayerInfo;
+import com.sky9th.game.chat.proto.Respawn;
 import com.sky9th.game.chat.services.DataPool;
+import io.netty.buffer.Unpooled;
+import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -61,18 +63,38 @@ public class WebSocketWriter {
         if (totalLength > 0) {
             return returnDataBytes;
         }
-        return new byte[0];
+        return null;
     }
 
     public byte[] getBroadcastData() {
-        List<Object> dataList = new ArrayList<>();
-        Enumeration<PlayerInfo> enumeration = dataPool.getPlayers().elements();
+        return getDataList(dataPool.getPlayers());
+    }
 
-        while (enumeration.hasMoreElements()) {
-            PlayerInfo playerInfo = enumeration.nextElement();
-            log.info(playerInfo.getNetworkID());
-            dataList.add(playerInfo);
+    public byte[] getRespawnData () {
+        log.info(String.valueOf(dataPool.getRespawns().size()));
+        return getDataList(dataPool.getRespawns());
+    }
+
+    private <T, B> byte[] getDataList(Dictionary<T, B> data) {
+        try {
+            List<Object> dataList = new ArrayList<>();
+            Enumeration<B> dataElements = data.elements();
+            while (dataElements.hasMoreElements()) {
+                B msg = dataElements.nextElement();
+                if (msg instanceof Respawn) {
+                    log.info(msg.toString());
+                }
+                if (msg != null) {
+                    dataList.add(msg);
+                }
+            }
+            if (dataList.size() > 0) {
+                return write(dataList);
+            }
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
         }
-        return write(dataList);
     }
 }

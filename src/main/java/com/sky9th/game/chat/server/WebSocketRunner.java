@@ -1,7 +1,5 @@
 package com.sky9th.game.chat.server;
 
-import com.sky9th.game.chat.protos.PlayerInfo;
-import com.sky9th.game.chat.protos.PlayerList;
 import com.sky9th.game.chat.services.DataPool;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
@@ -14,11 +12,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.Enumeration;
-import java.util.List;
 
 @Slf4j
 @Service
@@ -28,6 +22,8 @@ public class WebSocketRunner  {
     private final WebSocketServer webSocketServer;
     private final DataPool dataPool;
     private final WebSocketWriter webSocketWriter;
+
+    private final static int rate = 1000;
 
     @Async
     @Bean
@@ -40,16 +36,34 @@ public class WebSocketRunner  {
         }
     }
 
-    @Scheduled(fixedDelay = 30)
+    @Scheduled(fixedDelay = rate)
     public void broadcast () {
-        Enumeration<Channel> values = dataPool.connections.elements();
-        byte[] broadcastData = webSocketWriter.getBroadcastData();
-        if (broadcastData.length > 0) {
-            while (values.hasMoreElements()) {
-                Channel value = values.nextElement();
-                value.writeAndFlush(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(broadcastData)));
-                log.info("send broadcast data length:" + broadcastData.length);
+        try {
+            boolean broadcastRespawn = false;
+            byte[] respawnData = null;
+            if (!dataPool.getInits().isEmpty()) {
+                dataPool.getInits().remove();
+                respawnData = webSocketWriter.getRespawnData();
+                if (respawnData != null && respawnData.length > 0) {
+                    broadcastRespawn = true;
+                }
             }
+
+            Enumeration<Channel> values = dataPool.getConnections().elements();
+            byte[] broadcastData = webSocketWriter.getBroadcastData();
+            if (broadcastData != null && broadcastData.length > 0) {
+                while (values.hasMoreElements()) {
+                    Channel value = values.nextElement();
+                    value.writeAndFlush(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(broadcastData)));
+                    //log.info("send broadcast data length:" + broadcastData.length);
+                    if (broadcastRespawn) {
+                        value.writeAndFlush(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(respawnData)));
+                    }
+                }
+            }
+        } catch (Exception e) {
+            log.error(e.getMessage());
+            e.printStackTrace();
         }
     }
 }

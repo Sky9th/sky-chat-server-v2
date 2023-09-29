@@ -21,7 +21,7 @@ public class HttpRequestHandler extends ChannelInboundHandlerAdapter {
 
     WebSocketServerHandshaker handshake;
 
-    private final DataPool playerPool;
+    private final DataPool dataPool;
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
@@ -35,7 +35,8 @@ public class HttpRequestHandler extends ChannelInboundHandlerAdapter {
                 //Do the Handshake to upgrade connection from HTTP to WebSocket protocol
                 handleHandshake(ctx, httpRequest);
                 log.info("Handshake is done");
-                playerPool.connections.put(ctx.channel().id(), ctx.channel());
+                dataPool.getConnections().put(ctx.channel().id(), ctx.channel());
+                dataPool.getInits().add(ctx.channel().id());
             }
         } else {
             ctx.fireChannelRead(msg);

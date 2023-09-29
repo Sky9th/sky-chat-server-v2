@@ -1,8 +1,7 @@
 package com.sky9th.game.chat.server;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.sky9th.game.chat.protos.Message;
-import com.sky9th.game.chat.protos.PlayerInfo;
+import com.sky9th.game.chat.proto.PlayerInfo;
 import com.sky9th.game.chat.services.DataPool;
 import com.sky9th.game.chat.services.PlayerService;
 import io.netty.buffer.ByteBuf;
@@ -84,9 +83,7 @@ public class WebSocketReader extends ChannelInboundHandlerAdapter {
         acceptLength = 0;
         totalLength = 0;
         completeDataBytes = new byte[0];
-        //super.exceptionCaught(ctx, cause);
-        //dataPool.close(ctx.channel().id());
-        //ctx.close();
+        cause.printStackTrace();
     }
 
     private void parseMessage (ChannelHandlerContext ctx) throws InvalidProtocolBufferException {
@@ -117,7 +114,7 @@ public class WebSocketReader extends ChannelInboundHandlerAdapter {
             readLength += currentLength;
             readTimes ++;
         }
-        log.info("receive msg from: " + ctx.channel() + " ,length:" + readLength + " ,times:" + readTimes);
+        //log.info("receive msg from: " + ctx.channel() + " ,length:" + readLength + " ,times:" + readTimes);
         acceptLength = 0;
         ctx.fireChannelReadComplete();
     }
