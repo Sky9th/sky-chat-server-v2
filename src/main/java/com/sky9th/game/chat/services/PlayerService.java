@@ -3,10 +3,11 @@ package com.sky9th.game.chat.services;
 import com.sky9th.game.chat.proto.PlayerInfo;
 import com.sky9th.game.chat.proto.Respawn;
 import com.sky9th.game.chat.proto.RespawnType;
-import com.sky9th.game.chat.server.WebSocketRunner;
+import com.sky9th.game.chat.subscriber.event.RespawnChangeEvent;
 import io.netty.channel.ChannelId;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.util.Dictionary;
@@ -15,6 +16,8 @@ import java.util.Dictionary;
 @Slf4j
 @RequiredArgsConstructor
 public class PlayerService {
+
+    private final ApplicationEventPublisher eventPublisher;
 
     private final DataPool dataPool;
 
@@ -29,8 +32,9 @@ public class PlayerService {
                 .setType("Respawn")
                 .setRespawnType(RespawnType.Player)
                 .build();
-        dataPool.respawns.put(playerInfo.getNetworkID(), respawn);
-        if (dataPool.getRespawns().size() != lastRespawns) {
+        dataPool.respawns.put(respawn.getNetworkID(), respawn);
+        if (lastRespawns != dataPool.getRespawns().size()) {
+            eventPublisher.publishEvent(new RespawnChangeEvent(this));
             lastRespawns = dataPool.getRespawns().size();
         }
     }

@@ -11,6 +11,7 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker;
 import io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -22,6 +23,8 @@ public class HttpRequestHandler extends ChannelInboundHandlerAdapter {
     WebSocketServerHandshaker handshake;
 
     private final DataPool dataPool;
+
+    private final ApplicationEventPublisher applicationEventPublisher;
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
@@ -36,7 +39,6 @@ public class HttpRequestHandler extends ChannelInboundHandlerAdapter {
                 handleHandshake(ctx, httpRequest);
                 log.info("Handshake is done");
                 dataPool.getConnections().put(ctx.channel().id(), ctx.channel());
-                dataPool.getInits().add(ctx.channel().id());
             }
         } else {
             ctx.fireChannelRead(msg);

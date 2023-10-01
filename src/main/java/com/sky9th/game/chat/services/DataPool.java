@@ -6,6 +6,7 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelId;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.util.Dictionary;
@@ -24,14 +25,11 @@ public class DataPool {
 
     Dictionary<String, Respawn> respawns = new Hashtable<>();
 
-    Queue<ChannelId> inits = new LinkedList<>();
-
     public void close(ChannelId channelId) {
         String networkId = players.get(channelId).getNetworkID();
         connections.remove(channelId);
         players.remove(channelId);
         respawns.remove(networkId);
-        inits.remove(channelId);
     }
 
 }

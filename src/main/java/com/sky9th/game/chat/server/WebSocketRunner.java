@@ -20,8 +20,9 @@ import java.util.Enumeration;
 public class WebSocketRunner  {
 
     private final WebSocketServer webSocketServer;
-    private final DataPool dataPool;
     private final WebSocketWriter webSocketWriter;
+
+    private WebSocketPublisher webSocketPublisher;
 
     private final static int rate = 1000;
 
@@ -38,32 +39,7 @@ public class WebSocketRunner  {
 
     @Scheduled(fixedDelay = rate)
     public void broadcast () {
-        try {
-            boolean broadcastRespawn = false;
-            byte[] respawnData = null;
-            if (!dataPool.getInits().isEmpty()) {
-                dataPool.getInits().remove();
-                respawnData = webSocketWriter.getRespawnData();
-                if (respawnData != null && respawnData.length > 0) {
-                    broadcastRespawn = true;
-                }
-            }
-
-            Enumeration<Channel> values = dataPool.getConnections().elements();
-            byte[] broadcastData = webSocketWriter.getBroadcastData();
-            if (broadcastData != null && broadcastData.length > 0) {
-                while (values.hasMoreElements()) {
-                    Channel value = values.nextElement();
-                    value.writeAndFlush(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(broadcastData)));
-                    //log.info("send broadcast data length:" + broadcastData.length);
-                    if (broadcastRespawn) {
-                        value.writeAndFlush(new BinaryWebSocketFrame(Unpooled.wrappedBuffer(respawnData)));
-                    }
-                }
-            }
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            e.printStackTrace();
-        }
+        byte[] broadcastData = webSocketWriter.getBroadcastData();
+        webSocketPublisher.broadcast(broadcastData);
     }
 }

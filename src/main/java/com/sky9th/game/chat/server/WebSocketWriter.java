@@ -71,7 +71,6 @@ public class WebSocketWriter {
     }
 
     public byte[] getRespawnData () {
-        log.info(String.valueOf(dataPool.getRespawns().size()));
         return getDataList(dataPool.getRespawns());
     }
 
