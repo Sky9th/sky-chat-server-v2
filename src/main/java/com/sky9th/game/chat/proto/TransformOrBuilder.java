@@ -39,4 +39,48 @@ public interface TransformOrBuilder extends
    * @return The z.
    */
   double getZ();
+
+  /**
+   * <code>required bool up = 4;</code>
+   * @return Whether the up field is set.
+   */
+  boolean hasUp();
+  /**
+   * <code>required bool up = 4;</code>
+   * @return The up.
+   */
+  boolean getUp();
+
+  /**
+   * <code>required bool down = 5;</code>
+   * @return Whether the down field is set.
+   */
+  boolean hasDown();
+  /**
+   * <code>required bool down = 5;</code>
+   * @return The down.
+   */
+  boolean getDown();
+
+  /**
+   * <code>required bool left = 6;</code>
+   * @return Whether the left field is set.
+   */
+  boolean hasLeft();
+  /**
+   * <code>required bool left = 6;</code>
+   * @return The left.
+   */
+  boolean getLeft();
+
+  /**
+   * <code>required bool right = 7;</code>
+   * @return Whether the right field is set.
+   */
+  boolean hasRight();
+  /**
+   * <code>required bool right = 7;</code>
+   * @return The right.
+   */
+  boolean getRight();
 }

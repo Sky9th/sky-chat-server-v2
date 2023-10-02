@@ -27,9 +27,9 @@ public class DataPool {
 
     public void close(ChannelId channelId) {
         String networkId = players.get(channelId).getNetworkID();
-        connections.remove(channelId);
         players.remove(channelId);
         respawns.remove(networkId);
+        connections.remove(channelId);
     }
 
 }

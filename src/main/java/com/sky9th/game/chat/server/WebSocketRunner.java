@@ -24,7 +24,7 @@ public class WebSocketRunner  {
 
     private WebSocketPublisher webSocketPublisher;
 
-    private final static int rate = 1000;
+    private final static int rate = 30;
 
     @Async
     @Bean

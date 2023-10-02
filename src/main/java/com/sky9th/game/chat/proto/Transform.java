@@ -96,6 +96,82 @@ private static final long serialVersionUID = 0L;
     return z_;
   }
 
+  public static final int UP_FIELD_NUMBER = 4;
+  private boolean up_ = false;
+  /**
+   * <code>required bool up = 4;</code>
+   * @return Whether the up field is set.
+   */
+  @java.lang.Override
+  public boolean hasUp() {
+    return ((bitField0_ & 0x00000008) != 0);
+  }
+  /**
+   * <code>required bool up = 4;</code>
+   * @return The up.
+   */
+  @java.lang.Override
+  public boolean getUp() {
+    return up_;
+  }
+
+  public static final int DOWN_FIELD_NUMBER = 5;
+  private boolean down_ = false;
+  /**
+   * <code>required bool down = 5;</code>
+   * @return Whether the down field is set.
+   */
+  @java.lang.Override
+  public boolean hasDown() {
+    return ((bitField0_ & 0x00000010) != 0);
+  }
+  /**
+   * <code>required bool down = 5;</code>
+   * @return The down.
+   */
+  @java.lang.Override
+  public boolean getDown() {
+    return down_;
+  }
+
+  public static final int LEFT_FIELD_NUMBER = 6;
+  private boolean left_ = false;
+  /**
+   * <code>required bool left = 6;</code>
+   * @return Whether the left field is set.
+   */
+  @java.lang.Override
+  public boolean hasLeft() {
+    return ((bitField0_ & 0x00000020) != 0);
+  }
+  /**
+   * <code>required bool left = 6;</code>
+   * @return The left.
+   */
+  @java.lang.Override
+  public boolean getLeft() {
+    return left_;
+  }
+
+  public static final int RIGHT_FIELD_NUMBER = 7;
+  private boolean right_ = false;
+  /**
+   * <code>required bool right = 7;</code>
+   * @return Whether the right field is set.
+   */
+  @java.lang.Override
+  public boolean hasRight() {
+    return ((bitField0_ & 0x00000040) != 0);
+  }
+  /**
+   * <code>required bool right = 7;</code>
+   * @return The right.
+   */
+  @java.lang.Override
+  public boolean getRight() {
+    return right_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -115,6 +191,22 @@ private static final long serialVersionUID = 0L;
       memoizedIsInitialized = 0;
       return false;
     }
+    if (!hasUp()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
+    if (!hasDown()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
+    if (!hasLeft()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
+    if (!hasRight()) {
+      memoizedIsInitialized = 0;
+      return false;
+    }
     memoizedIsInitialized = 1;
     return true;
   }
@@ -130,6 +222,18 @@ private static final long serialVersionUID = 0L;
     }
     if (((bitField0_ & 0x00000004) != 0)) {
       output.writeDouble(3, z_);
+    }
+    if (((bitField0_ & 0x00000008) != 0)) {
+      output.writeBool(4, up_);
+    }
+    if (((bitField0_ & 0x00000010) != 0)) {
+      output.writeBool(5, down_);
+    }
+    if (((bitField0_ & 0x00000020) != 0)) {
+      output.writeBool(6, left_);
+    }
+    if (((bitField0_ & 0x00000040) != 0)) {
+      output.writeBool(7, right_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -151,6 +255,22 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000004) != 0)) {
       size += com.google.protobuf.CodedOutputStream
         .computeDoubleSize(3, z_);
+    }
+    if (((bitField0_ & 0x00000008) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(4, up_);
+    }
+    if (((bitField0_ & 0x00000010) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(5, down_);
+    }
+    if (((bitField0_ & 0x00000020) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(6, left_);
+    }
+    if (((bitField0_ & 0x00000040) != 0)) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(7, right_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -185,6 +305,26 @@ private static final long serialVersionUID = 0L;
           != java.lang.Double.doubleToLongBits(
               other.getZ())) return false;
     }
+    if (hasUp() != other.hasUp()) return false;
+    if (hasUp()) {
+      if (getUp()
+          != other.getUp()) return false;
+    }
+    if (hasDown() != other.hasDown()) return false;
+    if (hasDown()) {
+      if (getDown()
+          != other.getDown()) return false;
+    }
+    if (hasLeft() != other.hasLeft()) return false;
+    if (hasLeft()) {
+      if (getLeft()
+          != other.getLeft()) return false;
+    }
+    if (hasRight() != other.hasRight()) return false;
+    if (hasRight()) {
+      if (getRight()
+          != other.getRight()) return false;
+    }
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -210,6 +350,26 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + Z_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
           java.lang.Double.doubleToLongBits(getZ()));
+    }
+    if (hasUp()) {
+      hash = (37 * hash) + UP_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getUp());
+    }
+    if (hasDown()) {
+      hash = (37 * hash) + DOWN_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getDown());
+    }
+    if (hasLeft()) {
+      hash = (37 * hash) + LEFT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getLeft());
+    }
+    if (hasRight()) {
+      hash = (37 * hash) + RIGHT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getRight());
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
@@ -345,6 +505,10 @@ private static final long serialVersionUID = 0L;
       x_ = 0D;
       y_ = 0D;
       z_ = 0D;
+      up_ = false;
+      down_ = false;
+      left_ = false;
+      right_ = false;
       return this;
     }
 
@@ -390,6 +554,22 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.z_ = z_;
         to_bitField0_ |= 0x00000004;
+      }
+      if (((from_bitField0_ & 0x00000008) != 0)) {
+        result.up_ = up_;
+        to_bitField0_ |= 0x00000008;
+      }
+      if (((from_bitField0_ & 0x00000010) != 0)) {
+        result.down_ = down_;
+        to_bitField0_ |= 0x00000010;
+      }
+      if (((from_bitField0_ & 0x00000020) != 0)) {
+        result.left_ = left_;
+        to_bitField0_ |= 0x00000020;
+      }
+      if (((from_bitField0_ & 0x00000040) != 0)) {
+        result.right_ = right_;
+        to_bitField0_ |= 0x00000040;
       }
       result.bitField0_ |= to_bitField0_;
     }
@@ -447,6 +627,18 @@ private static final long serialVersionUID = 0L;
       if (other.hasZ()) {
         setZ(other.getZ());
       }
+      if (other.hasUp()) {
+        setUp(other.getUp());
+      }
+      if (other.hasDown()) {
+        setDown(other.getDown());
+      }
+      if (other.hasLeft()) {
+        setLeft(other.getLeft());
+      }
+      if (other.hasRight()) {
+        setRight(other.getRight());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -461,6 +653,18 @@ private static final long serialVersionUID = 0L;
         return false;
       }
       if (!hasZ()) {
+        return false;
+      }
+      if (!hasUp()) {
+        return false;
+      }
+      if (!hasDown()) {
+        return false;
+      }
+      if (!hasLeft()) {
+        return false;
+      }
+      if (!hasRight()) {
         return false;
       }
       return true;
@@ -497,6 +701,26 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000004;
               break;
             } // case 25
+            case 32: {
+              up_ = input.readBool();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 32
+            case 40: {
+              down_ = input.readBool();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 40
+            case 48: {
+              left_ = input.readBool();
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 48
+            case 56: {
+              right_ = input.readBool();
+              bitField0_ |= 0x00000040;
+              break;
+            } // case 56
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -630,6 +854,166 @@ private static final long serialVersionUID = 0L;
     public Builder clearZ() {
       bitField0_ = (bitField0_ & ~0x00000004);
       z_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private boolean up_ ;
+    /**
+     * <code>required bool up = 4;</code>
+     * @return Whether the up field is set.
+     */
+    @java.lang.Override
+    public boolean hasUp() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>required bool up = 4;</code>
+     * @return The up.
+     */
+    @java.lang.Override
+    public boolean getUp() {
+      return up_;
+    }
+    /**
+     * <code>required bool up = 4;</code>
+     * @param value The up to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUp(boolean value) {
+
+      up_ = value;
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>required bool up = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearUp() {
+      bitField0_ = (bitField0_ & ~0x00000008);
+      up_ = false;
+      onChanged();
+      return this;
+    }
+
+    private boolean down_ ;
+    /**
+     * <code>required bool down = 5;</code>
+     * @return Whether the down field is set.
+     */
+    @java.lang.Override
+    public boolean hasDown() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>required bool down = 5;</code>
+     * @return The down.
+     */
+    @java.lang.Override
+    public boolean getDown() {
+      return down_;
+    }
+    /**
+     * <code>required bool down = 5;</code>
+     * @param value The down to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDown(boolean value) {
+
+      down_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>required bool down = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDown() {
+      bitField0_ = (bitField0_ & ~0x00000010);
+      down_ = false;
+      onChanged();
+      return this;
+    }
+
+    private boolean left_ ;
+    /**
+     * <code>required bool left = 6;</code>
+     * @return Whether the left field is set.
+     */
+    @java.lang.Override
+    public boolean hasLeft() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>required bool left = 6;</code>
+     * @return The left.
+     */
+    @java.lang.Override
+    public boolean getLeft() {
+      return left_;
+    }
+    /**
+     * <code>required bool left = 6;</code>
+     * @param value The left to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLeft(boolean value) {
+
+      left_ = value;
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>required bool left = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLeft() {
+      bitField0_ = (bitField0_ & ~0x00000020);
+      left_ = false;
+      onChanged();
+      return this;
+    }
+
+    private boolean right_ ;
+    /**
+     * <code>required bool right = 7;</code>
+     * @return Whether the right field is set.
+     */
+    @java.lang.Override
+    public boolean hasRight() {
+      return ((bitField0_ & 0x00000040) != 0);
+    }
+    /**
+     * <code>required bool right = 7;</code>
+     * @return The right.
+     */
+    @java.lang.Override
+    public boolean getRight() {
+      return right_;
+    }
+    /**
+     * <code>required bool right = 7;</code>
+     * @param value The right to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRight(boolean value) {
+
+      right_ = value;
+      bitField0_ |= 0x00000040;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>required bool right = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRight() {
+      bitField0_ = (bitField0_ & ~0x00000040);
+      right_ = false;
       onChanged();
       return this;
     }
